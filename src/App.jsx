@@ -1,12 +1,20 @@
+// libraries
 import React from 'react';
+import { ThemeProvider } from '@material-ui/core/styles';
+
+//  styles
+import CssBaseline from '@material-ui/core/CssBaseline';
+import theme from './styles/theme';
+
+//  components
 import Routes from './routes/Routes';
 
 function App() {
   return (
-    <div>
-      Hello world: Put here routes with its respective layout
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Routes />
-    </div>
+    </ThemeProvider>
   );
 }
 
