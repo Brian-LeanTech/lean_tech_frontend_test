@@ -11,6 +11,18 @@ const theme = createMuiTheme({
     primary: {
       main: '#233B54',
     },
+    text: {
+      secondary: '#fff',
+    },
+  },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        a: {
+          textDecoration: 'none',
+        },
+      },
+    },
   },
 });
 
