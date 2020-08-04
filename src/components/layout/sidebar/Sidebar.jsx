@@ -1,7 +1,6 @@
 //  libraries
 import React from 'react';
 import PropTypes from 'prop-types';
-import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -15,7 +14,9 @@ import ReceiptOutlinedIcon from '@material-ui/icons/ReceiptOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import useStyles from './styles';
 
-function Sidebar({ open, onClose }) {
+function Sidebar({ isMdUp, open }) {
+  // if is desktop and opened menu, or if is just mobile
+  const showText = (isMdUp && open) || !isMdUp;
   const classes = useStyles();
   const menuOptions = [
     {
@@ -40,26 +41,24 @@ function Sidebar({ open, onClose }) {
     },
   ];
   return (
-    <Drawer open={open} onClose={() => onClose(false)}>
-      <List className={classes.list}>
-        <ListItem className={classes.listItem} button style={{ margin: '10px 0' }}>
-          <ListItemIcon><DashboardOutlinedIcon /></ListItemIcon>
-          <ListItemText primary='Dashboard' />
+    <List className={classes.list} style={{ width: showText ? '13rem' : 69 }}>
+      <ListItem className={`${classes.listItem} ${classes.dashboardItem}`} button>
+        <ListItemIcon className={classes.listItemIcon}><DashboardOutlinedIcon /></ListItemIcon>
+        {showText && <ListItemText primary='Dashboard' className={classes.listItemText} />}
+      </ListItem>
+      {menuOptions.map((menuOption) => (
+        <ListItem className={classes.listItem} button key={menuOption.text}>
+          <ListItemIcon className={classes.listItemIcon}>{menuOption.icon}</ListItemIcon>
+          {showText && <ListItemText primary={menuOption.text} className={classes.listItemText} />}
         </ListItem>
-        {menuOptions.map((menuOption) => (
-          <ListItem className={classes.listItem} button key={menuOption.text}>
-            <ListItemIcon>{menuOption.icon}</ListItemIcon>
-            <ListItemText primary={menuOption.text} />
-          </ListItem>
-        ))}
-      </List>
-    </Drawer>
+      ))}
+    </List>
   );
 }
 
 Sidebar.propTypes = {
+  isMdUp: PropTypes.bool.isRequired,
   open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

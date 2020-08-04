@@ -3,16 +3,17 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 //  components
-import Toolbar from 'components/toolbar/Toolbar';
-import Home from '../pages/home/Home';
+import Layout from 'components/layout/Layout';
+import Home from 'pages/home/Home';
 
 function Routes() {
   return (
     <BrowserRouter>
-      <Toolbar />
-      <Switch>
-        <Route exact path='/'><Home /></Route>
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route exact path='/'><Home /></Route>
+        </Switch>
+      </Layout>
     </BrowserRouter>
   );
 }
