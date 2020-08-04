@@ -6,50 +6,40 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
+//  hooks
+import { useHistory } from 'react-router-dom';
+
+//  constants
+import menuOptions from 'constants/pagesList';
+
 //  styles
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
-import PermMediaOutlinedIcon from '@material-ui/icons/PermMediaOutlined';
-import DescriptionIcon from '@material-ui/icons/Description';
-import ReceiptOutlinedIcon from '@material-ui/icons/ReceiptOutlined';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import useStyles from './styles';
 
 function Sidebar({ isMdUp, open }) {
-  // if is desktop and opened menu, or if is just mobile
-  const showText = (isMdUp && open) || !isMdUp;
   const classes = useStyles();
-  const menuOptions = [
-    {
-      text: 'Shipment List',
-      icon: <PermMediaOutlinedIcon />,
-      path: '',
-    },
-    {
-      text: 'Quote',
-      icon: <DescriptionIcon />,
-      path: '',
-    },
-    {
-      text: 'Invoice',
-      icon: <ReceiptOutlinedIcon />,
-      path: '',
-    },
-    {
-      text: 'Settings',
-      icon: <SettingsOutlinedIcon />,
-      path: '',
-    },
-  ];
+  const history = useHistory();
+  // if is desktop and opened menu, or if is just mobile then show text option
+  const showText = (isMdUp && open) || !isMdUp;
   return (
     <List className={classes.list} style={{ width: showText ? '13rem' : 69 }}>
-      <ListItem className={`${classes.listItem} ${classes.dashboardItem}`} button>
+      <ListItem
+        onClick={() => { history.push('/'); }}
+        className={`${classes.listItem} ${classes.dashboardItem}`}
+        button
+      >
         <ListItemIcon className={classes.listItemIcon}><DashboardOutlinedIcon /></ListItemIcon>
         {showText && <ListItemText primary='Dashboard' className={classes.listItemText} />}
       </ListItem>
-      {menuOptions.map((menuOption) => (
-        <ListItem className={classes.listItem} button key={menuOption.text}>
-          <ListItemIcon className={classes.listItemIcon}>{menuOption.icon}</ListItemIcon>
-          {showText && <ListItemText primary={menuOption.text} className={classes.listItemText} />}
+      {menuOptions.slice(1).map(({ sidebarText, Icon, path }) => (
+        <ListItem
+          onClick={() => { history.push(path); }}
+          className={classes.listItem}
+          button
+          key={sidebarText}
+        >
+          <ListItemIcon className={classes.listItemIcon}><Icon /></ListItemIcon>
+          {showText && <ListItemText primary={sidebarText} className={classes.listItemText} />}
         </ListItem>
       ))}
     </List>
