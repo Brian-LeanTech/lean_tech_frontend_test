@@ -4,13 +4,13 @@ import React from 'react';
 //  components
 import Example from 'components/example/Example';
 
-function Home() {
+function Dashboard() {
   return (
     <div>
-      Home
+      Dashboard
       <Example />
     </div>
   );
 }
 
-export default Home;
+export default Dashboard;

@@ -2,17 +2,22 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+//  constants
+import pagesList from 'constants/pagesList';
+
 //  components
-import Toolbar from 'components/toolbar/Toolbar';
-import Home from '../pages/home/Home';
+import Layout from 'components/layout/Layout';
 
 function Routes() {
   return (
     <BrowserRouter>
-      <Toolbar />
-      <Switch>
-        <Route exact path='/'><Home /></Route>
-      </Switch>
+      <Layout>
+        <Switch>
+          {pagesList.map(({ path, Component }) => (
+            <Route exact path={path} key={path}><Component /></Route>
+          ))}
+        </Switch>
+      </Layout>
     </BrowserRouter>
   );
 }
