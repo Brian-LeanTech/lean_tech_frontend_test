@@ -16,8 +16,8 @@ import useStyles from './styles';
 
 function Layout({ children }) {
   const classes = useStyles();
-  const isMdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
-  const [openSidebar, setOpenSidebar] = useState(false);
+  const isMdUp = useMediaQuery(((theme) => theme.breakpoints.up('md')), { noSsr: true });
+  const [openSidebar, setOpenSidebar] = useState(isMdUp);
   const showText = (isMdUp && openSidebar) || !isMdUp;
 
   return (
