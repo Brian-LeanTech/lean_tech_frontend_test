@@ -19,6 +19,10 @@ function Layout({ children }) {
   const isMdUp = useMediaQuery(((theme) => theme.breakpoints.up('md')), { noSsr: true });
   const [openSidebar, setOpenSidebar] = useState(isMdUp);
   const showText = (isMdUp && openSidebar) || !isMdUp;
+  const sidebarWidth = {
+    opened: '14rem',
+    closed: 57, // pixels
+  };
 
   return (
     <>
@@ -27,16 +31,20 @@ function Layout({ children }) {
         <Drawer
           open={openSidebar}
           onClose={() => setOpenSidebar(false)}
-          PaperProps={{ elevation: 3, className: classes.paper }}
+          PaperProps={{ elevation: 3, className: classes.paper, component: 'nav' }}
           variant={isMdUp ? 'permanent' : 'temporary'}
           className={classes.drawer}
-          style={{ width: showText ? '13rem' : 69 }}
+          style={{ width: showText ? sidebarWidth.opened : sidebarWidth.closed }}
         >
-          <Sidebar isMdUp={isMdUp} open={openSidebar} />
+          <Sidebar
+            isMdUp={isMdUp}
+            open={openSidebar}
+            width={sidebarWidth}
+          />
         </Drawer>
-        <Box component='main' p='3rem'>
+        <main className={classes.main}>
           {children}
-        </Box>
+        </main>
       </Box>
     </>
   );
