@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
 //  hooks
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -27,7 +27,7 @@ function Layout({ children }) {
   return (
     <>
       <Toolbar handleMenuButton={() => { setOpenSidebar(!openSidebar); }} />
-      <Box display='flex'>
+      <Typography component='div' style={{ display: 'flex' }}>
         <Drawer
           open={openSidebar}
           onClose={() => setOpenSidebar(false)}
@@ -45,7 +45,7 @@ function Layout({ children }) {
         <main className={classes.main}>
           {children}
         </main>
-      </Box>
+      </Typography>
     </>
   );
 }
