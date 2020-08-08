@@ -1,5 +1,6 @@
 //  libraries
 import React from 'react';
+import PropTypes from 'prop-types';
 import FormControl from '@material-ui/core/FormControl';
 import MuiSelect from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -8,10 +9,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 //  styles
 import useStyles from './styles';
 
-function Select() {
+function Select({ label, options }) {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
-  const label = 'Delivery date';
   const handleChange = (event) => {
     setAge(event.target.value);
   };
@@ -28,16 +28,19 @@ function Select() {
         autoWidth
         label={label}
       >
-        <MenuItem value=''>
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
-        <MenuItem value={30}>Status test test</MenuItem>
+        <MenuItem value=''><em>None</em></MenuItem>
+        {options.map((option) => <MenuItem value={option.value}>{option.itemLabel}</MenuItem>)}
       </MuiSelect>
     </FormControl>
   );
 }
+
+Select.propTypes = {
+  label: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf({
+    value: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
+    itemLabel: PropTypes.string,
+  }).isRequired,
+};
 
 export default Select;

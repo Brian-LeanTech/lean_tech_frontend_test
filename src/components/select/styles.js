@@ -4,27 +4,24 @@ const height = 32;
 const fontSize = 12;
 const borderRadius = 35;
 
-export default makeStyles((theme) => ({
+export default makeStyles(() => ({
   formControl: {
     backgroundColor: 'rgba(99, 99, 99, .2)',
     height,
     borderRadius,
     '& fieldset': {
       borderColor: 'rgba(99, 99, 99, 0)',
-      '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-        borderColor: 'red',
-      },
     },
   },
   inputLabel: {
     fontSize,
-    color: theme.palette.text.primary,
+    color: 'rgba(0, 0, 0, .54)',
     transform: `translate(10px, ${height / (fontSize * 0.26)}px) scale(1)`,
     paddingTop: 0,
     paddingBottom: 0,
     height: 'auto',
     position: 'relative',
-    paddingRight: 40,
+    paddingRight: 45,
     svg: {
       top: fontSize * 0.5,
     },
