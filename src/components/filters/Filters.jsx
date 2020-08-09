@@ -22,14 +22,16 @@ function Filters() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const citiesOrigin = useSelector((state) => state.entities.orders.data
-    .map((order) => order.origin.city));
+    .map((order) => order.origin.city)
+    .sort()
+    .filter((city, index, array) => city !== array[index + 1]));
   const citiesDestination = useSelector((state) => state.entities.orders.data
-    .map((order) => order.destination.city));
-  const allCities = [...citiesOrigin, ...citiesDestination]
-    .sort().filter((city, index, array) => city !== array[index + 1]);
+    .map((order) => order.destination.city)
+    .sort()
+    .filter((city, index, array) => city !== array[index + 1]));
 
-  const handleStatus = (value) => {
-    dispatch(filtersUpdate({ status: value }));
+  const handleSelect = (key) => (value) => {
+    dispatch(filtersUpdate({ [key]: value }));
   };
 
   return (
@@ -40,13 +42,18 @@ function Filters() {
           key={filter.label}
           label={filter.label}
           options={filter.options}
-          callback={handleStatus}
+          callback={handleSelect(filter.label)}
         />
       ))}
       <Select
-        label='city'
-        options={allCities.map((city) => ({ value: city, itemLabel: city }))}
-        callback={handleStatus}
+        label='origin'
+        options={citiesOrigin.map((city) => ({ value: city, itemLabel: city }))}
+        callback={handleSelect('origin')}
+      />
+      <Select
+        label='destination'
+        options={citiesDestination.map((city) => ({ value: city, itemLabel: city }))}
+        callback={handleSelect('destination')}
       />
     </Box>
   );

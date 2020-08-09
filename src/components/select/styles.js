@@ -9,10 +9,12 @@ export default makeStyles(() => ({
     backgroundColor: 'rgba(99, 99, 99, .2)',
     height,
     borderRadius,
+    margin: '0 4px',
     '& fieldset': {
       borderColor: 'rgba(99, 99, 99, 0)',
     },
   },
+
   inputLabel: {
     fontSize,
     color: 'rgba(0, 0, 0, .54)',
@@ -26,6 +28,7 @@ export default makeStyles(() => ({
       top: fontSize * 0.5,
     },
   },
+
   select: {
     height: 'inherit',
     marginTop: -fontSize,
