@@ -1,11 +1,11 @@
 import * as types from './types';
 
-export const filtersAdd = (data) => ({
-  type: types.FILTERS_ADD,
+export const filtersUpdate = (data) => ({
+  type: types.FILTERS_UPDATE,
   data,
 });
 
 export const filterDelete = (data) => ({
-  type: types.FILTERS_DELETE,
+  type: types.FILTERS_DELETE_ALL,
   data,
 });

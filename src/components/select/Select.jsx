@@ -9,27 +9,30 @@ import InputLabel from '@material-ui/core/InputLabel';
 //  styles
 import useStyles from './styles';
 
-function Select({ label, options }) {
+function Select({ label, options, callback }) {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleChange = (e) => {
+    callback(e.target.value);
+    setAge(e.target.value);
   };
 
   return (
     <FormControl variant='outlined' className={classes.formControl}>
-      <InputLabel className={classes.inputLabel} htmlFor='selectId'>{label}</InputLabel>
+      <InputLabel className={classes.inputLabel} htmlFor={label}>{label}</InputLabel>
       <MuiSelect
         className={classes.select}
-        labelId='selectId-label'
-        id='selectId'
+        labelId={`${label}-label`}
+        id={label}
         value={age}
         onChange={handleChange}
         autoWidth
         label={label}
       >
         <MenuItem value=''><em>None</em></MenuItem>
-        {options.map((option) => <MenuItem value={option.value}>{option.itemLabel}</MenuItem>)}
+        {options.map((option) => (
+          <MenuItem value={option.value} key={option.value}>{option.itemLabel}</MenuItem>
+        ))}
       </MuiSelect>
     </FormControl>
   );
@@ -37,10 +40,11 @@ function Select({ label, options }) {
 
 Select.propTypes = {
   label: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf({
-    value: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     itemLabel: PropTypes.string,
-  }).isRequired,
+  })).isRequired,
+  callback: PropTypes.func.isRequired,
 };
 
 export default Select;
