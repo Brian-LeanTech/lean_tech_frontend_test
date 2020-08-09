@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const FETCH = async (method, endpoint, payload = {}, url = null) => {
-  const URL = url || `${process.env.REACT_APP_BASE_BACKEND_URL}${endpoint}`;
+  const URL = url || `${process.env.REACT_APP_BACKEND_URL}${endpoint}`;
   const Authorization = 'xxx'; // load from .env
   const instance = axios.create({
     headers: {
