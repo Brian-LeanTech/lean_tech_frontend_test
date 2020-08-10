@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { Toolbar as MuiToolbar } from '@material-ui/core';
+import MuiToolbar from '@material-ui/core/Toolbar';
 import { Link } from 'react-router-dom';
 
 //  styles

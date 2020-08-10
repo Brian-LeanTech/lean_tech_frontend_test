@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
 //  hooks
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -19,25 +19,38 @@ function Layout({ children }) {
   const isMdUp = useMediaQuery(((theme) => theme.breakpoints.up('md')), { noSsr: true });
   const [openSidebar, setOpenSidebar] = useState(isMdUp);
   const showText = (isMdUp && openSidebar) || !isMdUp;
+  const sidebarWidth = {
+    opened: isMdUp ? '17rem' : '14rem',
+    closed: 57,
+  };
 
   return (
     <>
       <Toolbar handleMenuButton={() => { setOpenSidebar(!openSidebar); }} />
-      <Box display='flex'>
+      <Typography component='div' style={{ display: 'flex' }}>
         <Drawer
           open={openSidebar}
           onClose={() => setOpenSidebar(false)}
-          PaperProps={{ elevation: 3, className: classes.paper }}
+          PaperProps={{
+            elevation: 3,
+            className: classes.paper,
+            component: 'nav',
+            style: { paddingRight: openSidebar ? '2rem' : '1rem' },
+          }}
           variant={isMdUp ? 'permanent' : 'temporary'}
           className={classes.drawer}
-          style={{ width: showText ? '13rem' : 69 }}
+          style={{ width: showText ? sidebarWidth.opened : sidebarWidth.closed }}
         >
-          <Sidebar isMdUp={isMdUp} open={openSidebar} />
+          <Sidebar
+            isMdUp={isMdUp}
+            open={openSidebar}
+            width={sidebarWidth}
+          />
         </Drawer>
-        <Box component='main' p='3rem'>
+        <main className={classes.main}>
           {children}
-        </Box>
-      </Box>
+        </main>
+      </Typography>
     </>
   );
 }

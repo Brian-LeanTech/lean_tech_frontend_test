@@ -1,9 +1,5 @@
-import ServiceExample from './services/ServiceExample';
+import OrdersService from './services/Orders';
 
-class API {
-  constructor() {
-    this.exampleService = new ServiceExample();
-  }
-}
-
-export default new API();
+export default {
+  OrdersService,
+};

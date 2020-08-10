@@ -16,14 +16,15 @@ import menuOptions from 'constants/pagesList';
 import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 import useStyles from './styles';
 
-function Sidebar({ isMdUp, open }) {
+function Sidebar({ isMdUp, open, width }) {
   const classes = useStyles();
   const showText = (isMdUp && open) || !isMdUp;
   return (
-    <List component='nav' className={classes.list} style={{ width: showText ? '14rem' : 57 }}>
+    <List className={classes.list} style={{ width: showText ? width.opened : width.closed }} component='ul'>
       <ListItem
         className={`${classes.listItem} ${classes.dashboardItem}`}
         button
+        component='li'
       >
         <NavLink
           exact
@@ -40,6 +41,7 @@ function Sidebar({ isMdUp, open }) {
           className={classes.listItem}
           button
           key={sidebarText}
+          component='li'
         >
           <NavLink
             to={path}
@@ -58,6 +60,10 @@ function Sidebar({ isMdUp, open }) {
 Sidebar.propTypes = {
   isMdUp: PropTypes.bool.isRequired,
   open: PropTypes.bool.isRequired,
+  width: PropTypes.shape({
+    opened: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    closed: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }).isRequired,
 };
 
 export default Sidebar;
