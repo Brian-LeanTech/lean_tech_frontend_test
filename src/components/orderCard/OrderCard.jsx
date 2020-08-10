@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 //  styles
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import useStyles from './styles';
 
 function OrderCard() {
@@ -33,6 +34,9 @@ function OrderCard() {
         <ArrowForwardIcon className={classes.arrowIcon} />
         {location('Orlando, FL', 'Feb 20 2019')}
         <span className={classes.statusText}>In transit</span>
+        <div className={classes.locationText}>
+          <LocationOnOutlinedIcon className={classes.locationIcon} /><span>Tampa, FL</span>
+        </div>
         <Box display='flex' justifyContent='space-between' width='100%' mx='0'>
           <hr className={classes.hr} />
           <hr className={classes.hr} />

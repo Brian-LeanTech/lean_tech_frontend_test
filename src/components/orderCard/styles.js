@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   card: {
     padding: '0.5rem',
     paddingBottom: '1.5rem',
@@ -40,6 +40,7 @@ export default makeStyles(() => ({
     display: 'inline-block',
     width: '23%',
     margin: '5px 0',
+    marginTop: 2,
     border: 'rgb(40, 111, 241) 2px solid',
     borderRadius: 35,
   },
@@ -51,6 +52,31 @@ export default makeStyles(() => ({
     width: '100%',
     textAlign: 'right',
     lineHeight: '7px',
+    marginTop: -7,
+    [theme.breakpoints.up('sm')]: {
+      marginTop: -25,
+    },
+  },
+
+  locationText: {
+    display: 'none',
+    textAlign: 'right',
+    color: 'rgba(150, 148, 144, 0.46)',
+    fontSize: 16,
+    fontWeight: 700,
+    margin: 'auto 0',
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      width: '100%',
+      alignItems: 'center',
+      marginTop: 3,
+    },
+  },
+
+  locationIcon: {
+    color: 'rgb(226, 170, 7)',
+    marginRight: 5,
   },
 
   secondaryReference: {
@@ -75,6 +101,9 @@ export default makeStyles(() => ({
     fontWeight: 700,
     fontSize: 15,
     display: 'flex',
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
   },
 
   carrierStatus: {
@@ -102,5 +131,8 @@ export default makeStyles(() => ({
 
   companyInfo: {
     width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: 'initial',
+    },
   },
 }));
