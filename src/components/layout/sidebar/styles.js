@@ -3,6 +3,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 export default makeStyles((theme) => ({
   list: {
     transition: 'width 0.3s',
+    opacity: 0.8,
     [theme.breakpoints.up('md')]: {
       marginTop: '5rem',
     },
@@ -12,7 +13,7 @@ export default makeStyles((theme) => ({
     borderRadius: '0 40px 40px 0',
     padding: 0,
     margin: '1rem 0',
-    height: 44,
+    height: 57,
   },
 
   dashboardItem: {
@@ -32,6 +33,7 @@ export default makeStyles((theme) => ({
     transition: 'width 0.3s',
     '& .MuiTypography-body1': {
       fontWeight: 'inherit',
+      fontSize: 23,
     },
   },
 
@@ -39,11 +41,12 @@ export default makeStyles((theme) => ({
     fontSize: 'inherit',
     fontWeight: 'inherit',
     fontStyle: 'inherit',
-    display: 'inherit',
     color: 'inherit',
     textDecoration: 'inherit',
     minWidth: '100%',
     padding: '6px 0',
+    display: 'flex',
+    alignItems: 'center',
   },
 
   activeNav: {

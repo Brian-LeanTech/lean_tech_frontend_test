@@ -9,7 +9,7 @@ export default makeStyles(() => ({
     backgroundColor: 'rgba(99, 99, 99, .2)',
     height,
     borderRadius,
-    margin: '0 4px',
+    margin: '0 5px',
     '& fieldset': {
       borderColor: 'rgba(99, 99, 99, 0)',
     },
@@ -35,6 +35,7 @@ export default makeStyles(() => ({
     paddingTop: 0,
     paddingBottom: 0,
     borderRadius,
+    paddingRight: '1rem',
     '& > .MuiSelect-select': {
       paddingTop: 0,
       paddingBottom: 0,
@@ -42,6 +43,9 @@ export default makeStyles(() => ({
       display: 'flex',
       alignItems: 'center',
       borderRadius,
+      '&:focus': {
+        backgroundColor: 'rgba(0,0,0,0)',
+      },
     },
   },
 }));

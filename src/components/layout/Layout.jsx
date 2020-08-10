@@ -20,8 +20,8 @@ function Layout({ children }) {
   const [openSidebar, setOpenSidebar] = useState(isMdUp);
   const showText = (isMdUp && openSidebar) || !isMdUp;
   const sidebarWidth = {
-    opened: '14rem',
-    closed: 57, // pixels
+    opened: isMdUp ? '17rem' : '14rem',
+    closed: 57,
   };
 
   return (
@@ -31,7 +31,12 @@ function Layout({ children }) {
         <Drawer
           open={openSidebar}
           onClose={() => setOpenSidebar(false)}
-          PaperProps={{ elevation: 3, className: classes.paper, component: 'nav' }}
+          PaperProps={{
+            elevation: 3,
+            className: classes.paper,
+            component: 'nav',
+            style: { paddingRight: openSidebar ? '2rem' : '1rem' },
+          }}
           variant={isMdUp ? 'permanent' : 'temporary'}
           className={classes.drawer}
           style={{ width: showText ? sidebarWidth.opened : sidebarWidth.closed }}

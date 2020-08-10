@@ -2,6 +2,8 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 //  hooks
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,11 +14,13 @@ import { filtersUpdate } from 'redux/ducks/filters/actions';
 //  components
 import Select from 'components/select/Select';
 
+//  styles
+import PostAddOutlinedIcon from '@material-ui/icons/PostAddOutlined';
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import useStyles from './styles';
+
 // tools
 import filters from './filtersList';
-
-//  styles
-import useStyles from './styles';
 
 function Filters() {
   const classes = useStyles();
@@ -34,9 +38,26 @@ function Filters() {
     dispatch(filtersUpdate({ [key]: value }));
   };
 
+  const handleSearch = ({ target }) => {
+    dispatch(filtersUpdate({ searchText: target.value }));
+  };
+
   return (
     <Box display='flex' justifyContent='center' alignItems='center'>
-      <TextField className={classes.searchInput} variant='outlined' />
+      <TextField
+        onChange={handleSearch}
+        className={`${classes.searchInput} ${classes.onlyDesktop}`}
+        variant='outlined'
+        placeholder='Search for a Shipment'
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position='start'>
+              <SearchOutlinedIcon className={classes.iconSearchField} />
+            </InputAdornment>
+          ),
+          classes: { input: classes.input },
+        }}
+      />
       {filters.map((filter) => (
         <Select
           key={filter.label}
@@ -46,15 +67,24 @@ function Filters() {
         />
       ))}
       <Select
-        label='origin'
+        label='Origin'
         options={citiesOrigin.map((city) => ({ value: city, itemLabel: city }))}
         callback={handleSelect('origin')}
       />
       <Select
-        label='destination'
+        label='Destination'
         options={citiesDestination.map((city) => ({ value: city, itemLabel: city }))}
         callback={handleSelect('destination')}
       />
+      <Button
+        className={`${classes.createShipmentButton} ${classes.onlyDesktop}`}
+        variant='contained'
+        color='primary'
+        size='large'
+        startIcon={<PostAddOutlinedIcon className={classes.iconButton} />}
+      >
+        Create Shipment
+      </Button>
     </Box>
   );
 }

@@ -7,7 +7,9 @@ export default makeStyles((theme) => ({
     fontWeight: 500,
     marginTop: 5,
     [theme.breakpoints.up('md')]: {
+      fontSize: 25,
       fontWeight: 900,
+      color: '#000',
     },
   },
 }));
