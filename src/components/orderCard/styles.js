@@ -7,6 +7,35 @@ export default makeStyles((theme) => ({
     opacity: 0.9,
   },
 
+  cardContent: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'grid',
+      justifyContent: 'space-between',
+      gap: '1rem',
+      gridTemplateColumns: '3fr 1fr',
+    },
+  },
+
+  routeSection: {
+    maxWidth: 541,
+  },
+
+  statusAndRateSection: {
+    maxWidth: 260,
+    display: 'none',
+    minWidth: 180,
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      height: 'max-content',
+    },
+  },
+
+  littleSpan: {
+    color: 'rgba(0, 0, 0, 0.54)',
+    fontSize: 11,
+  },
+
   dateSpan: {
     marginLeft: 'auto',
     color: 'rgba(0, 0, 0, 0.54)',
@@ -55,6 +84,8 @@ export default makeStyles((theme) => ({
     marginTop: -7,
     [theme.breakpoints.up('sm')]: {
       marginTop: -25,
+      fontSize: 13,
+      fontWeight: 500,
     },
   },
 
@@ -97,10 +128,12 @@ export default makeStyles((theme) => ({
   },
 
   status: {
-    height: 27,
     fontWeight: 700,
     fontSize: 15,
     display: 'flex',
+  },
+
+  onlyMobile: {
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
@@ -110,11 +143,11 @@ export default makeStyles((theme) => ({
     color: 'rgb(36, 4, 199)',
     border: '1px solid rgb(212, 210, 210)',
     borderRadius: '5px 0px 0px 5px',
-    width: 50,
+    padding: '5px 0.5rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderCollapse: 'collapse',
+    // whiteSpace: 'nowrap',
   },
 
   customerStatus: {
@@ -122,11 +155,12 @@ export default makeStyles((theme) => ({
     color: '#910000',
     border: '1px solid rgb(212, 210, 210)',
     borderRadius: '0px 5px 5px 0px',
-    width: 50,
+    padding: '5px 0.5rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderCollapse: 'collapse',
+    // whiteSpace: 'nowrap',
   },
 
   companyInfo: {
@@ -134,5 +168,18 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: 'initial',
     },
+  },
+
+  priceInfo: {
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: 0,
+    textAlign: 'center',
+  },
+
+  price: {
+    marginBottom: 0,
+    fontSize: 20,
   },
 }));
