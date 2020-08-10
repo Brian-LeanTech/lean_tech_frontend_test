@@ -43,7 +43,7 @@ function Filters() {
   };
 
   return (
-    <Box display='flex' justifyContent='center' alignItems='center'>
+    <Box display='flex' justifyContent='center' alignItems='center' m='2rem 0'>
       <TextField
         onChange={handleSearch}
         className={`${classes.searchInput} ${classes.onlyDesktop}`}
