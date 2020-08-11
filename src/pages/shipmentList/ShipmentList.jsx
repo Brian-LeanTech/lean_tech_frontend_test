@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 //  hooks
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,7 +23,7 @@ import useStyles from './styles';
 function ShipmentList() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const orders = useSelector((state) => state.entities.orders?.data || []);
+  const { data: orders, loading = false } = useSelector((state) => state.entities.orders);
   const {
     searchText = '',
     status = '',
@@ -32,12 +33,11 @@ function ShipmentList() {
   const [ordersList, setOrdersList] = useState([]);
   const [page, setPage] = useState(0);
   const perPage = 3;
-  // const totalPages = Math.ceil((orders.length) / perPage);
   const [totalPages, setTotalPages] = useState(Math.ceil((orders.length) / perPage));
 
   //  initial loading
   useEffect(() => {
-    dispatch(ordersFetchRequest((response) => setOrdersList(response)));
+    dispatch(ordersFetchRequest());
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -53,6 +53,7 @@ function ShipmentList() {
         || order.shipmentId.toString().toLowerCase().includes(lowerCase));
       setOrdersList(filteredOrders);
       setTotalPages(Math.ceil((filteredOrders.length) / perPage));
+      setPage(0);
     }
   }, [orders, searchText]);
 
@@ -70,12 +71,14 @@ function ShipmentList() {
     }
     setOrdersList(filteredOrders);
     setTotalPages(Math.ceil((filteredOrders.length) / perPage));
+    setPage(0);
   }, [orders, status, origin, destination]);
 
   return (
     <>
       <h1 className={classes.title}>Shipment List</h1>
       <Filters />
+      {loading && <LinearProgress color='secondary' />}
       {ordersList.slice(perPage * page, perPage * (page + 1)).map((order) => (
         <OrderCard order={order} key={order.shipmentId} />
       ))}

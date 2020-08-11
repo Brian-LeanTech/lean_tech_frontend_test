@@ -3,11 +3,10 @@ import API from 'API';
 import * as types from './types';
 import { ordersFetchSuccess, ordersFetchFail } from './actions';
 
-function* fetchOrders(action) {
+function* fetchOrders() {
   try {
     const { data } = yield call(API.OrdersService.getOrders);
     yield put(ordersFetchSuccess(data));
-    action.callback(data);
   } catch (error) {
     yield put(ordersFetchFail({ error: error.message }));
   }

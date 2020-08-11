@@ -1,8 +1,7 @@
 import * as types from './types';
 
-export const ordersFetchRequest = (callback) => ({
+export const ordersFetchRequest = () => ({
   type: types.ORDERS_FETCH_REQUEST,
-  callback,
 });
 
 export const ordersFetchSuccess = (res) => ({
