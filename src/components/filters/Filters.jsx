@@ -60,10 +60,9 @@ function Filters() {
       />
       {filters.map((filter) => (
         <Select
-          key={filter.label}
           label={filter.label}
           options={filter.options}
-          callback={handleSelect(filter.label)}
+          callback={handleSelect(filter.key)}
         />
       ))}
       <Select
