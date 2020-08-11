@@ -1,5 +1,6 @@
 export default [
   {
+    key: 'status',
     label: 'Status',
     options: [
       {

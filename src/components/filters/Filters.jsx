@@ -43,7 +43,7 @@ function Filters() {
   };
 
   return (
-    <Box display='flex' justifyContent='center' alignItems='center'>
+    <Box display='flex' justifyContent='center' alignItems='center' m='2rem 0'>
       <TextField
         onChange={handleSearch}
         className={`${classes.searchInput} ${classes.onlyDesktop}`}
@@ -60,10 +60,10 @@ function Filters() {
       />
       {filters.map((filter) => (
         <Select
-          key={filter.label}
+          key={filter.key}
           label={filter.label}
           options={filter.options}
-          callback={handleSelect(filter.label)}
+          callback={handleSelect(filter.key)}
         />
       ))}
       <Select
