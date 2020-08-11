@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 
 //  hooks
-import { useDispatch/* , useSelector */ } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 //  redux
 import { ordersFetchRequest } from 'redux/ducks/orders/actions';
@@ -17,7 +17,7 @@ import useStyles from './styles';
 function ShipmentList() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  // const orders = useSelector((state) => state.entities.orders.data);
+  const orders = useSelector((state) => state.entities.orders?.data || []);
 
   useEffect(() => {
     dispatch(ordersFetchRequest());
@@ -28,7 +28,9 @@ function ShipmentList() {
     <>
       <h1 className={classes.title}>Shipment List</h1>
       <Filters />
-      <OrderCard />
+      {orders.map((order) => (
+        <OrderCard order={order} key={order.shipmentId} />
+      ))}
     </>
   );
 }

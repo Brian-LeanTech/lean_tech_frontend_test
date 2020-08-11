@@ -5,6 +5,7 @@ export default makeStyles((theme) => ({
     padding: '0.5rem',
     paddingBottom: '1.5rem',
     opacity: 0.9,
+    marginBottom: '2rem',
   },
 
   cardContent: {
@@ -130,7 +131,7 @@ export default makeStyles((theme) => ({
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: 17,
     margin: 0,
-    lineHeight: 0,
+    lineHeight: '15px',
   },
 
   status: {
@@ -148,7 +149,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    // whiteSpace: 'nowrap',
+    minWidth: '5rem',
   },
 
   customerStatus: {
@@ -160,8 +161,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderCollapse: 'collapse',
-    // whiteSpace: 'nowrap',
+    minWidth: '5rem',
   },
 
   companyInfo: {
