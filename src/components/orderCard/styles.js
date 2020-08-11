@@ -14,10 +14,14 @@ export default makeStyles((theme) => ({
       gap: '1rem',
       gridTemplateColumns: '3fr 1fr',
     },
+    [theme.breakpoints.up('md')]: {
+      gridTemplateColumns: '3fr 1fr 1fr auto',
+    },
   },
 
   routeSection: {
     maxWidth: 541,
+    minWidth: 312,
   },
 
   statusAndRateSection: {
@@ -28,6 +32,7 @@ export default makeStyles((theme) => ({
       display: 'flex',
       flexWrap: 'wrap',
       height: 'max-content',
+      justifyContent: 'flex-end',
     },
   },
 
@@ -113,7 +118,8 @@ export default makeStyles((theme) => ({
   secondaryReference: {
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: 13,
-    lineHeight: '2px',
+    lineHeight: '5px',
+    width: 'max-content',
     '& b': {
       color: '#000',
       fontWeight: 500,
@@ -131,12 +137,7 @@ export default makeStyles((theme) => ({
     fontWeight: 700,
     fontSize: 15,
     display: 'flex',
-  },
-
-  onlyMobile: {
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
+    justifyContent: 'center',
   },
 
   carrierStatus: {
@@ -181,5 +182,17 @@ export default makeStyles((theme) => ({
   price: {
     marginBottom: 0,
     fontSize: 20,
+  },
+
+  onlyMobile: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+
+  hideOnDesktop: {
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
 }));

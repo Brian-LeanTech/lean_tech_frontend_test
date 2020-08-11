@@ -46,7 +46,7 @@ function OrderCard() {
               <hr className={classes.hr} />
             </Box>
           </div>
-          <Box display='flex' flexWrap='wrap' justifyContent='space-between' alignItems='center' width='100%'>
+          <Box display={['flex', 'flex', 'none']} flexWrap='wrap' justifyContent='space-between' alignItems='center' width='100%'>
             <div className={classes.secondaryReference}>
               <p><b>IN</b> <span>98544843-34</span></p>
               <p><b>PO</b> <span>2017-234</span></p>
@@ -61,6 +61,14 @@ function OrderCard() {
             </div>
           </Box>
         </div>
+        <Box display={['none', 'none', 'block']} className={classes.secondaryReference}>
+          <p><b>IN</b> <span>98544843-34</span></p>
+          <p><b>PO</b> <span>2017-234</span></p>
+        </Box>
+        <Box display={['none', 'none', 'block']} className={classes.companyInfo}>
+          <img src='https://storage.googleapis.com/starckorepublicbucket/carriers/FedEx-CarrierLogo.png' width='66px' alt='company logo' />
+          <p className={classes.companyName}>Company</p>
+        </Box>
         <div className={classes.statusAndRateSection}>
           <Box display='flex' justifyContent='space-around' width='100%'>
             <span className={classes.littleSpan}>Status Carrier</span>
