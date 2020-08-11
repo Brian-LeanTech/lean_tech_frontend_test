@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
     paddingBottom: '1.5rem',
     opacity: 0.9,
     marginBottom: '2rem',
+    overflowX: 'auto',
   },
 
   cardContent: {
@@ -121,6 +122,7 @@ export default makeStyles((theme) => ({
     fontSize: 13,
     lineHeight: '5px',
     width: 'max-content',
+    margin: '0 auto',
     '& b': {
       color: '#000',
       fontWeight: 500,
@@ -166,6 +168,7 @@ export default makeStyles((theme) => ({
 
   companyInfo: {
     width: '100%',
+    margin: '0 auto',
     [theme.breakpoints.up('sm')]: {
       width: 'initial',
     },
