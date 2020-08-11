@@ -64,7 +64,7 @@ export default makeStyles((theme) => ({
     fontWeight: 500,
     color: 'rgba(0, 0, 0, 0.87)',
     margin: 0,
-    lineHeight: '10px',
+    lineHeight: '16px',
   },
 
   arrowIcon: {
@@ -90,7 +90,7 @@ export default makeStyles((theme) => ({
     lineHeight: '7px',
     marginTop: -7,
     [theme.breakpoints.up('sm')]: {
-      marginTop: -25,
+      marginTop: -30,
       fontSize: 13,
       fontWeight: 500,
     },
@@ -122,10 +122,14 @@ export default makeStyles((theme) => ({
     fontSize: 13,
     lineHeight: '5px',
     width: 'max-content',
-    margin: '0 auto',
+    margin: 0,
+    marginRight: 'auto',
     '& b': {
       color: '#000',
       fontWeight: 500,
+    },
+    [theme.breakpoints.up('md')]: {
+      margin: '0 auto',
     },
   },
 

@@ -29,7 +29,7 @@ function OrderCard({ order }) {
   } = order;
 
   const location = (cityTitle, dateSpan = '...') => (
-    <Box display='inline-block'>
+    <Box display='inline-block' maxWidth='8rem'>
       <h3 className={classes.cityTitle}>{cityTitle}</h3>
       <span className={classes.littleSpan}>{dateSpan}</span>
     </Box>
@@ -58,7 +58,10 @@ function OrderCard({ order }) {
               <hr className={classes.hr} />
               <hr className={classes.hr} />
               <hr className={classes.hr} />
-              <hr className={classes.hr} />
+              <hr
+                className={classes.hr}
+                style={{ borderColor: trackingDetails[0].status === 'Delivered' ? 'rgb(40, 111, 241)' : 'rgba(151, 151, 151, 0.36)' }}
+              />
             </Box>
           </div>
           <Box display={['flex', 'flex', 'none']} flexWrap='wrap' justifyContent='space-between' alignItems='center' width='100%'>
