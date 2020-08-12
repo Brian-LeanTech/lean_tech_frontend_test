@@ -21,6 +21,9 @@ import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 import LocalShippingTwoToneIcon from '@material-ui/icons/LocalShippingTwoTone';
 import useStyles from './styles';
 
+/**
+ * Opened by orderCard component
+ */
 function ShipmentModalDetail() {
   const classes = useStyles();
   const dispatch = useDispatch();

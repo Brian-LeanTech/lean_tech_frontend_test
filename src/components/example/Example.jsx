@@ -6,7 +6,7 @@ function Example() {
   const classes = useStyles();
   return (
     <div className={classes.drawer}>
-      Example component
+      <h1>Dashboard</h1>
     </div>
   );
 }
