@@ -13,3 +13,9 @@ export const ordersFetchFail = (error) => ({
   type: types.ORDERS_FETCH_FAIL,
   error,
 });
+
+export const ordersUpdate = (id, city) => ({
+  type: types.ORDERS_UPDATE,
+  id,
+  city,
+});

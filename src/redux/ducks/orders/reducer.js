@@ -1,4 +1,5 @@
 import * as types from './types';
+import { update } from './model';
 
 const initialState = {
   loading: false,
@@ -25,6 +26,9 @@ export default (state = initialState, action) => {
         data: [],
         error: [...state.error, action.error],
       };
+    case types.ORDERS_UPDATE:
+      return update(state, action.id, action.city);
+
     default:
       return state;
   }
