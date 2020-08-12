@@ -5,6 +5,12 @@ import Card from '@material-ui/core/Card';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 
+//  hooks
+import { useDispatch } from 'react-redux';
+
+//  redux
+import { updateShipmentModal } from 'redux/ducks/shipmentModal/actions';
+
 //  styles
 import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -13,6 +19,7 @@ import useStyles from './styles';
 
 function OrderCard({ order }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const {
     shipmentId = '...',
     createdDate = '...',
@@ -40,7 +47,11 @@ function OrderCard({ order }) {
       <Box display='flex' justifyContent='space-between' alignItems='center' mb='1rem'>
         <span className={classes.mainReference}>{shipmentId}</span>
         <span className={classes.dateSpan}>{createdDate}</span>
-        <IconButton className={classes.optionsButton} aria-label='more options'>
+        <IconButton
+          className={classes.optionsButton}
+          onClick={() => dispatch(updateShipmentModal({ open: true, shipmentId }))}
+          aria-label='shipment detail'
+        >
           <MoreVertOutlinedIcon />
         </IconButton>
       </Box>

@@ -14,6 +14,7 @@ import { ordersFetchRequest } from 'redux/ducks/orders/actions';
 //  components
 import Filters from 'components/filters/Filters';
 import OrderCard from 'components/orderCard/OrderCard';
+import ShipmentModalDetail from 'components/shipmentModalDetail/ShipmentModalDetail';
 
 //  styles
 import NavigateNextOutlinedIcon from '@material-ui/icons/NavigateNextOutlined';
@@ -92,6 +93,7 @@ function ShipmentList() {
         </IconButton>
       </Box>
       <Typography variant='body2' align='center'>Total pages: {totalPages}</Typography>
+      <ShipmentModalDetail />
     </>
   );
 }
