@@ -3,10 +3,10 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 export default makeStyles(() => ({
   drawer: {
     border: '1px solid',
-    width: '10rem',
-    transition: 'width 4s',
+    width: '15rem',
+    transition: 'width 1s',
     '&:hover': {
-      width: '15rem',
+      width: '17rem',
     },
   },
 }));

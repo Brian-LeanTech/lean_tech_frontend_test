@@ -9,6 +9,12 @@ import InputLabel from '@material-ui/core/InputLabel';
 //  styles
 import useStyles from './styles';
 
+/**
+ * General select input
+ * @param {string} label label value of select
+ * @param {object} options Populate input options (see PropTypes)
+ * @param {func} callback handleFunction when select change (onChange) Eg: (value) => {...}
+ */
 function Select({ label, options, callback }) {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
